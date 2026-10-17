@@ -321,82 +321,117 @@
 
 
     <!-- Contact -->
-    <section class="section section-light" id="contact">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="eyebrow">LET'S CONNECT</p>
-          <h2>Contact <span>Me</span></h2>
-          <p>Interested in working together? Get in touch.</p>
+    
+<!-- Contact -->
+<section class="section section-light" id="contact">
+  <div class="container">
+
+    <div class="section-heading reveal">
+      <p class="eyebrow">LET'S CONNECT</p>
+      <h2>Contact <span>Me</span></h2>
+      <p>Interested in working together? Get in touch.</p>
+    </div>
+
+    <div class="contact-grid">
+
+      <!-- Contact Information -->
+      <div class="contact-info reveal">
+        <h3>Let's talk about opportunities.</h3>
+
+        <p>
+          I'm interested in suitable entry-level software
+          development roles, internships, and collaborative projects.
+        </p>
+
+        <div class="contact-detail">
+          <span class="contact-symbol">@</span>
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:yenkugarinarasimha@gmail.com">
+              yenkugarinarasimha@gmail.com
+            </a>
+          </div>
         </div>
 
-        <div class="contact-grid">
-          <div class="contact-info reveal">
-            <h3>Let's talk about opportunities.</h3>
-            <p>
-              I'm interested in suitable entry-level software
-              development roles, internships, and collaborative projects.
-            </p>
-
-            <div class="contact-detail">
-              <span class="contact-symbol">@</span>
-              <div>
-                <strong>Email</strong>
-                <a id="email-link" href="mailto:your.email@example.com">
-                  yenkugarinarasimha@gmail.com
-                </a>
-              </div>
-            </div>
-
-            <div class="contact-detail">
-              <span class="contact-symbol">GH</span>
-              <div>
-                <strong>GitHub</strong>
-                <a href="https://github.com/" target="_blank"
-                   rel="noopener noreferrer">
-                  https://github.com/Narasimha9912
-                </a>
-              </div>
-            </div>
-
-            <div class="contact-detail">
-              <span class="contact-symbol">in</span>
-              <div>
-                <strong>LinkedIn</strong>
-                <a href="https://www.linkedin.com/" target="_blank"
-                   rel="noopener noreferrer">
-                  https://www.linkedin.com/in/yenkugari-yoganarasimha-705b0336b/?isSelfProfile=true
-                </a>
-              </div>
-            </div>
+        <div class="contact-detail">
+          <span class="contact-symbol">GH</span>
+          <div>
+            <strong>GitHub</strong>
+            <a href="https://github.com/Narasimha9912"
+               target="_blank"
+               rel="noopener noreferrer">
+              github.com/Narasimha9912
+            </a>
           </div>
+        </div>
 
-          <form class="contact-form reveal" id="contact-form">
-            <label for="name">Yenkugari Yoganarasimha</label>
-            <input id="name" name="name" type="text"
-                   placeholder="Enter your name" required>
-
-            <label for="visitor-email">yenkugarinarasimha@gmail.com</label>
-            <input id="visitor-email" name="email" type="email"
-                   placeholder="Enter your email" required>
-
-            <label for="message">Your message</label>
-            <textarea id="message" name="message" rows="5"
-                      placeholder="Write your message here..."
-                      required></textarea>
-
-            <button type="submit" class="btn btn-primary">
-              Open Email App
-            </button>
-
-            <p class="form-note" id="form-status" aria-live="polite">
-              This form opens your email application. It does not
-              send messages directly from the website.
-            </p>
-          </form>
+        <div class="contact-detail">
+          <span class="contact-symbol">in</span>
+          <div>
+            <strong>LinkedIn</strong>
+            <a href="https://www.linkedin.com/in/yenkugari-yoganarasimha-705b0336b/"
+               target="_blank"
+               rel="noopener noreferrer">
+              View my LinkedIn profile
+            </a>
+          </div>
         </div>
       </div>
-    </section>
-  </main>
+
+      <!-- Contact Form -->
+      <form class="contact-form reveal"
+            id="contact-form"
+            action="https://formspree.io/forms"
+            method="POST">
+
+        <label for="name">Your Name</label>
+        <input id="name"
+               name="name"
+               type="text"
+               placeholder="Enter your name"
+               autocomplete="name"
+               required>
+
+        <label for="visitor-email">Your Email</label>
+        <input id="visitor-email"
+               name="email"
+               type="email"
+               placeholder="Enter your email"
+               autocomplete="email"
+               required>
+
+        <label for="subject">Subject</label>
+        <input id="subject"
+               name="subject"
+               type="text"
+               placeholder="Enter a subject"
+               required>
+
+        <label for="message">Your Message</label>
+        <textarea id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="Write your message here..."
+                  required></textarea>
+
+        <button type="submit"
+                class="btn btn-primary"
+                id="submit-button">
+          Send Message
+        </button>
+
+        <p class="form-note"
+           id="form-status"
+           aria-live="polite">
+          Fill in the details and click Send Message.
+        </p>
+
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
 
   <!-- Footer -->
   <footer class="footer">
