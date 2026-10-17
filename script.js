@@ -100,47 +100,51 @@ document.getElementById("year").textContent =
 // 5. Contact form opens email application
 // ==================================
 
+
+ // ==================================
+ // 5. Contact form submission
+ // ==================================
+
 const contactForm = document.getElementById("contact-form");
 const formStatus = document.getElementById("form-status");
+const submitButton = document.getElementById("submit-button");
 
-// IMPORTANT: Replace this with your actual email address.
-const portfolioEmail = "your.email@example.com";
-
-contactForm.addEventListener("submit", (event) => {
+contactForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const name = document.getElementById("name").value.trim();
-  const senderEmail = document
-    .getElementById("visitor-email")
-    .value.trim();
-  const message = document.getElementById("message").value.trim();
-
-  if (!name || !senderEmail || !message) {
-    formStatus.textContent = "Please complete all fields.";
+  if (!contactForm.checkValidity()) {
+    contactForm.reportValidity();
     return;
   }
 
-  if (portfolioEmail === "your.email@example.com") {
+  submitButton.disabled = true;
+  submitButton.textContent = "Sending...";
+  formStatus.textContent = "Submitting your message...";
+
+  try {
+    const response = await fetch(contactForm.action, {
+      method: "POST",
+      body: new FormData(contactForm),
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    if (response.ok) {
+      formStatus.textContent =
+        "Thank you! Your message was submitted successfully.";
+      contactForm.reset();
+    } else {
+      const result = await response.json().catch(() => ({}));
+      formStatus.textContent =
+        result.errors?.map((error) => error.message).join(" ") ||
+        "Submission failed. Please check your form setup and try again.";
+    }
+  } catch (error) {
     formStatus.textContent =
-      "Please replace the placeholder email in script.js " +
-      "with your real email address before using the contact form.";
-    return;
+      "Could not connect. Check your internet connection and try again.";
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = "Send Message";
   }
-
-  const subject = `Portfolio contact from ${name}`;
-
-  const body =
-    `Name: ${name}\n` +
-    `Email: ${senderEmail}\n\n` +
-    `Message:\n${message}`;
-
-  const mailtoUrl =
-    `mailto:${portfolioEmail}` +
-    `?subject=${encodeURIComponent(subject)}` +
-    `&body=${encodeURIComponent(body)}`;
-
-  formStatus.textContent =
-    "Opening your email application. Please send the message there.";
-
-  window.location.href = mailtoUrl;
 });
