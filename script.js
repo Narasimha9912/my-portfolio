@@ -96,55 +96,54 @@ backToTop.addEventListener("click", () => {
 document.getElementById("year").textContent =
   new Date().getFullYear();
 
-// ==================================
-// 5. Contact form opens email application
-// ==================================
-
-
  // ==================================
  // 5. Contact form submission
  // ==================================
+
 
 const contactForm = document.getElementById("contact-form");
 const formStatus = document.getElementById("form-status");
 const submitButton = document.getElementById("submit-button");
 
-contactForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
+if (contactForm && formStatus && submitButton) {
+  contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-  if (!contactForm.checkValidity()) {
-    contactForm.reportValidity();
-    return;
-  }
-
-  submitButton.disabled = true;
-  submitButton.textContent = "Sending...";
-  formStatus.textContent = "Submitting your message...";
-
-  try {
-    const response = await fetch(contactForm.action, {
-      method: "POST",
-      body: new FormData(contactForm),
-      headers: {
-        Accept: "application/json"
-      }
-    });
-
-    if (response.ok) {
-      formStatus.textContent =
-        "Thank you! Your message was submitted successfully.";
-      contactForm.reset();
-    } else {
-      const result = await response.json().catch(() => ({}));
-      formStatus.textContent =
-        result.errors?.map((error) => error.message).join(" ") ||
-        "Submission failed. Please check your form setup and try again.";
+    if (!contactForm.checkValidity()) {
+      contactForm.reportValidity();
+      return;
     }
-  } catch (error) {
-    formStatus.textContent =
-      "Could not connect. Check your internet connection and try again.";
-  } finally {
-    submitButton.disabled = false;
-    submitButton.textContent = "Send Message";
-  }
-});
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+    formStatus.textContent = "Submitting your message...";
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: "POST",
+        body: new FormData(contactForm),
+        headers: {
+          Accept: "application/json"
+        }
+      });
+
+      if (response.ok) {
+        formStatus.textContent =
+          "Thank you! Your message was sent successfully.";
+        contactForm.reset();
+      } else {
+        const result = await response.json().catch(() => ({}));
+
+        formStatus.textContent =
+          result.errors?.map(error => error.message).join(" ") ||
+          "Unable to send your message. Please check your form setup.";
+      }
+    } catch (error) {
+      formStatus.textContent =
+        "Connection failed. Please check your internet and try again.";
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = "Send Message";
+    }
+  });
+}
