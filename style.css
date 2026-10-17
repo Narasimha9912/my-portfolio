@@ -983,3 +983,37 @@ h1 span,
     transform: none;
   }
 }
+
+
+<form class="contact-form reveal" id="contact-form"
+      action="https://formspree.io/f/YOUR_FORM_ID"
+      method="POST">
+
+  <label for="name">Your name</label>
+  <input id="name" name="name" type="text"
+         placeholder="Enter your name"
+         autocomplete="name" required>
+
+  <label for="visitor-email">Your email</label>
+  <input id="visitor-email" name="email" type="email"
+         placeholder="Enter your email"
+         autocomplete="email" required>
+
+  <label for="subject">Subject</label>
+  <input id="subject" name="subject" type="text"
+         placeholder="Enter a subject" required>
+
+  <label for="message">Your message</label>
+  <textarea id="message" name="message" rows="5"
+            placeholder="Write your message here..."
+            required></textarea>
+
+  <button type="submit" class="btn btn-primary" id="submit-button">
+    Send Message
+  </button>
+
+  <p class="form-note" id="form-status" aria-live="polite">
+    Fill in the details and send me a message.
+  </p>
+</form>
+
