@@ -1063,3 +1063,33 @@ h1 span,
     justify-content: center;
   }
 }
+
+.timeline-card {
+    background: #ffffff;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.timeline-card:hover {
+    transform: translateY(-5px);
+}
+
+.timeline-year {
+    color: #2563eb;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.timeline-card h3 {
+    margin: 10px 0;
+    color: #1e293b;
+}
+
+.timeline-card h4,
+.timeline-card p {
+    color: #64748b;
+}
+
