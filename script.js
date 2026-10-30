@@ -35,6 +35,11 @@ navLinks.querySelectorAll("a").forEach((link) => {
 // 2. Reveal sections while scrolling
 // ==================================
 
+
+// ==================================
+// 2. Reveal sections while scrolling
+// ==================================
+
 const revealElements = document.querySelectorAll(".reveal");
 
 const reduceMotion = window.matchMedia(
@@ -42,6 +47,7 @@ const reduceMotion = window.matchMedia(
 ).matches;
 
 if ("IntersectionObserver" in window && !reduceMotion) {
+
   const revealObserver = new IntersectionObserver(
     (entries, observer) => {
       entries.forEach((entry) => {
@@ -52,19 +58,24 @@ if ("IntersectionObserver" in window && !reduceMotion) {
       });
     },
     {
-      threshold: 0.12
+      threshold: 0.05,
+      rootMargin: "0px 0px 50px 0px"
     }
   );
 
   revealElements.forEach((element) => {
     revealObserver.observe(element);
   });
+
 } else {
-  // Fallback for older browsers and reduced-motion preferences.
+
+  // Show all elements if animation is unavailable.
   revealElements.forEach((element) => {
     element.classList.add("visible");
   });
+
 }
+
 
 // ==================================
 // 3. Back-to-top button
